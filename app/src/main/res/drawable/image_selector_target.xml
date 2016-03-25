@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:Android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- 定义按钮按下时的图片 -->
+    <item Android:drawable="@mipmap/entertarget_press" Android:state_pressed="true"/>
+    <!-- 定义按钮默认的图片 -->
+    <item Android:drawable="@mipmap/entertarget"/>
+
+
+</selector>

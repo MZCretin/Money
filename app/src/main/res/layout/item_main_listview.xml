@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/head_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_item_weeks_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/e01" />
+
+        <TextView
+            android:id="@+id/tv_item_money_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_item_money_out"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="2dp"
+            android:paddingRight="20dp"
+            android:text="￥10000.00"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_item_money_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_item_weeks_icon"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="20dp"
+            android:text="￥120.00"
+            android:textColor="#884879"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</LinearLayout>

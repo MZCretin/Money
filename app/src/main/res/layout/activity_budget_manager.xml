@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.diandian.ui.BudgetManagerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#63CCBD">
+
+        <ImageView
+            android:id="@+id/iv_new_bueget_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bar_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="预算管理"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/iv_budget_p_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@mipmap/p_status" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_budget_p_status"
+            android:padding="6dp"
+            android:text="预算状态"
+            android:textSize="18sp" />
+
+        <com.diandian.ycdyus.moneymanager.view.CheckSwitchButton
+            android:id="@+id/switch_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_budget_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/iv_budget_p_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/p_period" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_budget_p_period"
+                android:padding="6dp"
+                android:text="预算周期"
+                android:textSize="18sp" />
+
+            <com.diandian.ycdyus.moneymanager.view.CheckSwitchButtonPeriod
+                android:id="@+id/switch_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/iv_budget_p_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/p_budget" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_budget_p_budget"
+                android:padding="6dp"
+                android:text="预算金额"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_budget_jine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="30dp"
+                android:text="￥500"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

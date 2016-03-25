@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.diandian.ui.BudgetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#63CCBD">
+
+        <ImageView
+            android:id="@+id/iv_new_bueget_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bar_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="预算/目标选择"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:background="@drawable/image_selector_budget"
+            android:id="@+id/iv_budget_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+             />
+
+        <Button
+            android:background="@drawable/image_selector_target"
+            android:id="@+id/iv_budget_target"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+             />
+    </LinearLayout>
+</LinearLayout>
