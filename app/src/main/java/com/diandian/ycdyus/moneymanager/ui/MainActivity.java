@@ -28,7 +28,9 @@ import java.util.Date;
 import java.util.List;
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements MyImageView.MyImageViewMoveEvent {
+public class
+
+MainActivity extends AppCompatActivity implements MyImageView.MyImageViewMoveEvent {
     @ViewById
     ListView mainListview;
     @ViewById
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
 
         testRegister();
     }
+
 
     private void initData() {
         List<ManagerBean> tempList = Hawk.get("main_list");
@@ -146,7 +149,9 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
                 break;
             case 1:
                 Log.e("HHHHHH", "LEFT");
-//                startActivity(new Intent(this, NewRecordActivity_.class));
+                Intent intent = new Intent(this,NewRecordActivity_.class);
+                intent.putExtra("type",1);
+                startActivity(intent);
                 break;
             case 2:
                 Log.e("HHHHHH", "RIGHT");
@@ -165,4 +170,6 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
     public void notifyNewRecordResult(NotifyNewRecordBack event) {
         initData();
     }
+
+
 }

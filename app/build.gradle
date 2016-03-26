@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets.main{
+        jniLibs.srcDirs = ['src/jniLibs'];
+    }
+
 }
 apply plugin: 'android-apt'
 def AAVersion = '3.3.2' // change this to your desired version, for example the latest stable: 3.2
@@ -39,4 +44,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.github.orhanobut:hawk:1.21'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
+    compile files('src/jniLibs/VoiceRecognition.jar')
 }

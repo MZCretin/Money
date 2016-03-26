@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
+import com.baidu.voicerecognition.android.ui.DialogRecognitionListener;
 import com.diandian.ycdyus.moneymanager.R;
 import com.diandian.ycdyus.moneymanager.adapter.NewRecordGridViewAdapter;
 import com.diandian.ycdyus.moneymanager.adapter.NewRecordViewPagerAdapter;
@@ -82,10 +84,18 @@ public class NewRecordActivity extends AppCompatActivity implements View.OnClick
     private List<NewRecordGridViewModel> gvList1 = new ArrayList<>();
     private NewRecordGridViewAdapter gvAdapter1;
 
+    private int type;
+
     @AfterViews
     public void init() {
         getSupportActionBar().hide();
         initViewPagerData();
+
+        type = getIntent().getIntExtra("type",0);
+
+        if(type!=0){
+            speak();
+        }
 
         vpNewRecord.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -115,6 +125,32 @@ public class NewRecordActivity extends AppCompatActivity implements View.OnClick
                 NewRecordActivity.this.finish();
             }
         });
+    }
+
+    private void speak() {
+        // 识别结果
+        final String recognition_result = "";
+        // 参数，其中apiKey和secretKey为必须配置参数，其他根据实际需要配置
+        Bundle params = new Bundle();
+        // 配置apkKey
+        params.putString(BaiduASRDigitalDialog.PARAM_API_KEY, "RHDVE77KKUGjoBpgKHqC8sKs");
+        // 配置secretKey
+        params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY, "a6bdd452672d15d630d6384e3a4369a5");
+        // 创建百度语音识别对话框
+        BaiduASRDigitalDialog mDialog = new BaiduASRDigitalDialog(this, params);
+        // 设置对话框回调监听器
+        mDialog.setDialogRecognitionListener(new DialogRecognitionListener(){
+            // 识别结果处理函数
+            public void onResults(Bundle arg0) {
+                ArrayList<String> rs = arg0 != null ? arg0
+                        .getStringArrayList(RESULTS_RECOGNITION) : null;
+                if (rs != null && rs.size() > 0) {
+                    edNewRecordBeizhu.setText(rs.get(0));
+                }
+            }
+        });
+        // 显示对话框
+        mDialog.show();
     }
 
     private void initViewListener() {

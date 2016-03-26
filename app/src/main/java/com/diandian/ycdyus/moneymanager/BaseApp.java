@@ -1,11 +1,9 @@
 package com.diandian.ycdyus.moneymanager;
 
 import android.app.Application;
-
 import com.orhanobut.hawk.Hawk;
 import com.orhanobut.hawk.HawkBuilder;
 import com.orhanobut.hawk.LogLevel;
-
 import cn.bmob.v3.Bmob;
 
 /**

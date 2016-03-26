@@ -54,7 +54,7 @@
             android:id="@+id/switch_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp" />
     </RelativeLayout>
