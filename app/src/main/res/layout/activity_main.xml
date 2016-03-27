@@ -1,52 +1,156 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.diandian.ycdyus.moneymanager.view.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="@mipmap/bg"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4EBAAA">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/iv_new_record_back"
+        <LinearLayout
+            android:id="@+id/lv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/bar_menu_press" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="大哥记账"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:src="@mipmap/b00_1" />
 
-    <RelativeLayout
+            <TextView
+                android:id="@+id/login_regster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="点击注册/登录"
+                android:textColor="#ddfde9" />
+
+            <LinearLayout
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/b07_left"
+                    android:gravity="bottom|right"
+                    android:paddingBottom="7dp"
+                    android:paddingRight="15dp"
+                    android:text="￥0"
+                    android:textColor="#ddfde9"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/b07_right"
+                    android:gravity="bottom|right"
+                    android:paddingBottom="7dp"
+                    android:paddingRight="20dp"
+                    android:text="￥0"
+                    android:textColor="#ddfde9"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/mymoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/b06"
+                android:gravity="center|bottom"
+                android:padding="8dp"
+                android:text="￥12800.60"
+                android:textColor="#ddfde9"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/synchronization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/b02" />
+
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/b04" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.diandian.ycdyus.moneymanager.view.MyRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.diandian.ycdyus.moneymanager.view.MyImageView
-            android:id="@+id/myimageview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/d00" />
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_main_faces"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:clickable="false"
-            android:src="@mipmap/face_1" />
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/main_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4EBAAA">
 
-</LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_new_record_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bar_menu_press" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="大哥记账"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.diandian.ycdyus.moneymanager.view.MyImageView
+                    android:id="@+id/myimageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/d00" />
+
+                <ImageView
+                    android:id="@+id/iv_main_faces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:src="@mipmap/face_1" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/main_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </com.diandian.ycdyus.moneymanager.view.MyRelativeLayout>
+
+
+</com.diandian.ycdyus.moneymanager.view.DragLayout>

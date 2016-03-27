@@ -2,10 +2,12 @@ package com.diandian.ycdyus.moneymanager.bean;
 
 import java.io.Serializable;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by cretin on 16/3/19.
  */
-public class ManagerBean implements Serializable{
+public class ManagerBean extends BmobObject implements Serializable{
     public static final int CUSTOMER_IN = 1;
     public static final int CUSTOMER_OUT = 0;
 

@@ -4,10 +4,12 @@ import com.diandian.ycdyus.moneymanager.bean.ManagerBean;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by ycdyus on 2016/2/29.
  */
-public class MainListViewModel {
+public class MainListViewModel extends BmobObject {
     private double shouru;
     private double zhichu;
     private List<ManagerBean> list;

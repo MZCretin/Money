@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
 
-    <!--百度语音-->
+    <!-- 百度语音 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -27,8 +27,8 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <!-- 蓝牙录音检测耳机状态 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <!-- end -->
 
+    <!-- end -->
     <application
         android:name=".BaseApp"
         android:allowBackup="true"
@@ -44,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.BaseActivity" />
         <activity android:name=".ui.GuideActivity" />
         <activity android:name=".ui.MainActivity_" />
@@ -52,8 +51,10 @@
         <activity android:name=".ui.BudgetManagerActivity_" />
         <activity
             android:name=".ui.NewRecordActivity_"
-            android:label="@string/title_activity_new_record"/>
-        <activity android:name=".ui.AddTypeActivity_"></activity>
+            android:label="@string/title_activity_new_record" />
+        <activity android:name=".ui.AddTypeActivity_" />
+        <activity android:name=".ui.StatisticsActivity_" />
+        <activity android:name=".ui.LoginActivity_"></activity>
     </application>
 
 </manifest>
