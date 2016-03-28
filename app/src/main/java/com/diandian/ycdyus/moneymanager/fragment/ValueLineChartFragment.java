@@ -1,18 +1,17 @@
 /**
- *
- *   Copyright (C) 2014 Paul Cech
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Copyright (C) 2014 Paul Cech
+ * <p/>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.diandian.ycdyus.moneymanager.fragment;
@@ -24,11 +23,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.diandian.ycdyus.moneymanager.R;
+import com.diandian.ycdyus.moneymanager.model.BudgetManagerModel;
+import com.diandian.ycdyus.moneymanager.utils.HawkUtils;
+import com.orhanobut.hawk.Hawk;
 
 import org.eazegraph.lib.charts.ValueLineChart;
 import org.eazegraph.lib.communication.IOnPointFocusedListener;
 import org.eazegraph.lib.models.ValueLinePoint;
 import org.eazegraph.lib.models.ValueLineSeries;
+
+import java.util.List;
 
 public class ValueLineChartFragment extends ChartFragment {
 
@@ -66,67 +70,25 @@ public class ValueLineChartFragment extends ChartFragment {
     }
 
     private void loadData() {
+        List<HawkUtils.DataModel> dataList = new HawkUtils().getDataList();
 
 
         ValueLineSeries series = new ValueLineSeries();
         series.setColor(0xFF63CBB0);
 
-//        series.addPoint(new ValueLinePoint(163.4f));
-//        series.addPoint(new ValueLinePoint(162.f));
-//        series.addPoint(new ValueLinePoint(161.4f));
-//        series.addPoint(new ValueLinePoint(160.4f));
-//        series.addPoint(new ValueLinePoint(159.4f));
-//        series.addPoint(new ValueLinePoint(160.4f));
-//        series.addPoint(new ValueLinePoint(158.4f));
-//        series.addPoint(new ValueLinePoint(158.f));
-//        series.addPoint(new ValueLinePoint(144.f));
-//        series.addPoint(new ValueLinePoint(134.f));
-//        series.addPoint(new ValueLinePoint(120.f));
-//        series.addPoint(new ValueLinePoint(180.f));
+        for (HawkUtils.DataModel data : dataList) {
+            series.addPoint(new ValueLinePoint((float) data.getCount()));
+        }
 
-        series.addPoint(new ValueLinePoint(4.4f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(3.2f));
-        series.addPoint(new ValueLinePoint(2.6f));
-        series.addPoint(new ValueLinePoint(5.0f));
-        series.addPoint(new ValueLinePoint(3.5f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(0.4f));
-        series.addPoint(new ValueLinePoint(3.4f));
-        series.addPoint(new ValueLinePoint(2.5f));
-        series.addPoint(new ValueLinePoint(1.4f));
-        series.addPoint(new ValueLinePoint(4.4f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(3.2f));
-        series.addPoint(new ValueLinePoint(2.6f));
-        series.addPoint(new ValueLinePoint(5.0f));
-        series.addPoint(new ValueLinePoint(3.5f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(0.4f));
-        series.addPoint(new ValueLinePoint(3.4f));
-        series.addPoint(new ValueLinePoint(2.5f));
-        series.addPoint(new ValueLinePoint(1.0f));
-        series.addPoint(new ValueLinePoint(4.4f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(3.2f));
-        series.addPoint(new ValueLinePoint(2.6f));
-        series.addPoint(new ValueLinePoint(5.0f));
-        series.addPoint(new ValueLinePoint(3.5f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(0.4f));
-        series.addPoint(new ValueLinePoint(3.4f));
-        series.addPoint(new ValueLinePoint(2.5f));
-        series.addPoint(new ValueLinePoint(1.0f));
-        series.addPoint(new ValueLinePoint(4.2f));
-        series.addPoint(new ValueLinePoint(2.4f));
-        series.addPoint(new ValueLinePoint(3.6f));
-        series.addPoint(new ValueLinePoint(1.0f));
-        series.addPoint(new ValueLinePoint(2.5f));
-        series.addPoint(new ValueLinePoint(2.0f));
-        series.addPoint(new ValueLinePoint(1.4f));
+        float standValue = 0;
+        if (Hawk.get("budget_manager") != null) {
+            BudgetManagerModel model = Hawk.get("budget_manager");
+            standValue = model.getBudgetCount();
+            if (standValue != 0) {
+                mValueLineChart.addStandardValue(standValue);
+            }
+        }
 
-//        mValueLineChart.addStandardValue(new StandardValue(140f));
-//        mValueLineChart.addStandardValue(new StandardValue(163.4f));
         mValueLineChart.addSeries(series);
         mValueLineChart.setOnPointFocusedListener(new IOnPointFocusedListener() {
             @Override
@@ -134,7 +96,6 @@ public class ValueLineChartFragment extends ChartFragment {
                 Log.d("Test", "Pos: " + _PointPos);
             }
         });
-
     }
 
     private ValueLineChart mValueLineChart;

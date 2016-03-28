@@ -12,6 +12,7 @@
         app:egLegendTextSize="18sp"
         app:egUsePieRotation="true"
         app:egValueTextSize="36sp"
+        android:background="#FFFFFF"
         app:egAutoCenter="true"
         app:egOpenClockwise="false"
         app:egInnerValueUnit="%"/>

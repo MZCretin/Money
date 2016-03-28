@@ -20,6 +20,7 @@ import com.diandian.ycdyus.moneymanager.bean.ManagerBean;
 import com.diandian.ycdyus.moneymanager.eventbus.LoginSuccess;
 import com.diandian.ycdyus.moneymanager.eventbus.NotifyNewRecordBack;
 import com.diandian.ycdyus.moneymanager.model.BudgetManagerModel;
+import com.diandian.ycdyus.moneymanager.model.BudgetStateChangeModel;
 import com.diandian.ycdyus.moneymanager.model.MainListViewModel;
 import com.diandian.ycdyus.moneymanager.view.DragLayout;
 import com.diandian.ycdyus.moneymanager.view.MyImageView;
@@ -345,6 +346,11 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
         loginRegster.setText(event.getName());
         loginRegster.setEnabled(false);
         icon.setImageResource(R.mipmap.b00_2);
+    }
+
+    @Subscribe
+    public void notifyBudgetStateChanged(BudgetStateChangeModel event){
+        initData();
     }
 
 }

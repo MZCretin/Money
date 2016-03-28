@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.diandian.ycdyus.moneymanager.R;
 import com.diandian.ycdyus.moneymanager.model.BudgetManagerModel;
+import com.diandian.ycdyus.moneymanager.model.BudgetStateChangeModel;
 import com.diandian.ycdyus.moneymanager.view.CheckSwitchButton;
 import com.diandian.ycdyus.moneymanager.view.CheckSwitchButtonPeriod;
 import com.orhanobut.hawk.Hawk;
@@ -20,6 +21,7 @@ import com.orhanobut.hawk.Hawk;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.EventBus;
 
 @EActivity(R.layout.activity_budget_manager)
 public class BudgetManagerActivity extends AppCompatActivity {
@@ -39,7 +41,6 @@ public class BudgetManagerActivity extends AppCompatActivity {
     @AfterViews
     public void init() {
         getSupportActionBar().hide();
-
 
         model = Hawk.get("budget_manager");
 
@@ -70,6 +71,7 @@ public class BudgetManagerActivity extends AppCompatActivity {
                 model.setBudgetCount(Float.parseFloat(tvBudgetJine.getText().toString().replace("￥", "")));
                 model.setBudgetStatus(isChecked);
                 Hawk.put("budget_manager", model);
+                EventBus.getDefault().post(new BudgetStateChangeModel());
                 if (!isChecked) {
                     llBudgetContainer.setVisibility(View.VISIBLE);
                 } else {
@@ -83,6 +85,7 @@ public class BudgetManagerActivity extends AppCompatActivity {
                 model.setBudgetCount(Float.parseFloat(tvBudgetJine.getText().toString().replace("￥", "")));
                 model.setBudgetPeriod(isChecked);
                 Hawk.put("budget_manager", model);
+                EventBus.getDefault().post(new BudgetStateChangeModel());
             }
         });
         tvBudgetJine.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +101,7 @@ public class BudgetManagerActivity extends AppCompatActivity {
                         model.setBudgetCount(Float.parseFloat(editText.getText().toString()));
                         tvBudgetJine.setText("￥" + editText.getText().toString());
                         Hawk.put("budget_manager", model);
+                        EventBus.getDefault().post(new BudgetStateChangeModel());
                     }
                 })
                         .setNegativeButton("取消", null).show();
