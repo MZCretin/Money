@@ -59,7 +59,7 @@ public class BudgetActivity extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setMessage("如果你能坚持记账一周，大哥才能相信你有足够的毅力使用攒钱目标功能~！不然还是算了吧~嘿嘿！");
+        builder.setMessage("如果你能坚持记账一周，露米才能相信你有足够的毅力使用攒钱目标功能~！不然还是算了吧~嘿嘿！");
         builder.setTitle("提示");
         builder.setPositiveButton("切~！走着瞧~", new DialogInterface.OnClickListener() {
             @Override

@@ -119,7 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="大哥记账"
+                    android:text="露米记账"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </RelativeLayout>
@@ -149,6 +149,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/guide_home"
+            android:background="@mipmap/guide_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_iknow"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="50dp"
+                android:layout_marginRight="80dp"
+                android:src="@mipmap/guide_know"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
     </com.diandian.ycdyus.moneymanager.view.MyRelativeLayout>
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,14 +70,18 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
     DragLayout dl;
     @ViewById
     LinearLayout lv;
+    @ViewById
+    RelativeLayout guideHome;
+    @ViewById
+    ImageView ivIknow;
     private List<MainListViewModel> list;
     private MainListViewAdapter adapter;
     private int todayWeek;
     private double incomeCount;
     private double expenseCount;
     private int[] positionRes = new int[]{R.mipmap.d00, R.mipmap.d01, R.mipmap.d02, R.mipmap.d03, R.mipmap.d04, R.mipmap.d05, R.mipmap.d06, R.mipmap.d07, R.mipmap.d08, R.mipmap.d09,
-                                            R.mipmap.d10, R.mipmap.d11, R.mipmap.d12, R.mipmap.d13, R.mipmap.d14, R.mipmap.d15, R.mipmap.d16, R.mipmap.d17, R.mipmap.d18, R.mipmap.d19,
-                                              R.mipmap.d20, R.mipmap.d21, R.mipmap.d22, R.mipmap.d23, R.mipmap.d24, R.mipmap.d25, R.mipmap.d26, R.mipmap.d27, R.mipmap.d28, R.mipmap.d29,
+            R.mipmap.d10, R.mipmap.d11, R.mipmap.d12, R.mipmap.d13, R.mipmap.d14, R.mipmap.d15, R.mipmap.d16, R.mipmap.d17, R.mipmap.d18, R.mipmap.d19,
+            R.mipmap.d20, R.mipmap.d21, R.mipmap.d22, R.mipmap.d23, R.mipmap.d24, R.mipmap.d25, R.mipmap.d26, R.mipmap.d27, R.mipmap.d28, R.mipmap.d29,
             R.mipmap.d30, R.mipmap.d31, R.mipmap.d32, R.mipmap.d33, R.mipmap.d34, R.mipmap.d35, R.mipmap.d36, R.mipmap.d37, R.mipmap.d38, R.mipmap.d39,
             R.mipmap.d40, R.mipmap.d41, R.mipmap.d42, R.mipmap.d43, R.mipmap.d44, R.mipmap.d45, R.mipmap.d46, R.mipmap.d47, R.mipmap.d48, R.mipmap.d49,
             R.mipmap.d50, R.mipmap.d51, R.mipmap.d52, R.mipmap.d53, R.mipmap.d54, R.mipmap.d55, R.mipmap.d56, R.mipmap.d57, R.mipmap.d58, R.mipmap.d59,
@@ -102,13 +107,6 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
 
         initData();
 
-//        mainListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                startActivity(new Intent(MainActivity.this, NewRecordActivity_.class));
-//            }
-//        });
-
         myimageview.setMoveEvent(this);
 
         ivNewRecordBack.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +115,22 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
                 dl.open();
             }
         });
+
+        boolean flag = false;
+        if (Hawk.get("if_is_first") != null)
+            flag = (Boolean) Hawk.get("if_is_first");
+        if (flag == false) {
+            Hawk.put("if_is_first", true);
+            guideHome.setVisibility(View.VISIBLE);
+            ivIknow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    guideHome.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            guideHome.setVisibility(View.GONE);
+        }
 
         addListener();
     }
@@ -154,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shareMsg("大哥记账","推荐使用","大家用了大哥记账都说好！你也去下载呗",null);
+                shareMsg("大哥记账", "推荐使用", "大家用了大哥记账都说好！你也去下载呗", null);
             }
         });
     }
@@ -212,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
         if (budgetMangerModel != null) {
             if (!budgetMangerModel.isBudgetStatus()) {
                 //计算百分比
-                currPosition = (int) (expenseCount *100 / budgetMangerModel.getBudgetCount());
+                currPosition = (int) (expenseCount * 100 / budgetMangerModel.getBudgetCount());
                 myimageview.setImageResource(positionRes[currPosition]);
             }
         }
@@ -349,7 +363,7 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
     }
 
     @Subscribe
-    public void notifyBudgetStateChanged(BudgetStateChangeModel event){
+    public void notifyBudgetStateChanged(BudgetStateChangeModel event) {
         initData();
     }
 
