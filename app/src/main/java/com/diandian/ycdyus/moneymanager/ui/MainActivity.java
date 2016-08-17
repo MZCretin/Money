@@ -264,6 +264,9 @@ public class MainActivity extends AppCompatActivity implements MyImageView.MyIma
     @Override
     public void onCenterClick() {
         ivMainFaces.setVisibility(View.GONE);
+        if(currPosition>100){
+            currPosition = 100;
+        }
         myimageview.setImageResource(positionRes[currPosition]);
     }
 

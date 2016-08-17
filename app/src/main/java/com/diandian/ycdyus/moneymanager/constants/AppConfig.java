@@ -10,7 +10,6 @@ package com.diandian.ycdyus.moneymanager.constants;
  * @version 1.0
  */
 public class AppConfig {
-
     public static final String APP_IMAGE_CACHE = "imageCache";
     public static final String ISFRTST = "isFirst";
     public static final String ID_INTENT_GIFT_TO_DETAILS = "id";
